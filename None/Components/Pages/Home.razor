@@ -1,5 +1,8 @@
 ﻿@page "/"
 
+@rendermode InteractiveServer 
+@* con le modifiche a program + InteractiveServer => dopo il click, a video vediamo text *@
+
 <PageTitle>Home</PageTitle>
 
 <h1>Hello, world!</h1>
@@ -17,6 +20,7 @@ Welcome to your new app.
 
     // con il click di un pulsante vogliamo vedere apparire a video una nuova scritta
     // Con SSR render mode, dopo il click a video non vediamo succedere nulla
+    // Con le modifiche a program + InteractiveServer , dopo il click a video vediamo text
     void ButtonClicked()
     {
         text = "Button has been clicked!";
