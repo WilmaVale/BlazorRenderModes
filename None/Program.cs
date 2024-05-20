@@ -1,4 +1,4 @@
-using None.Components;
+using BlazorRenderModes.Components;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -7,7 +7,8 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRazorComponents()
     //Aggiunge servizi per supportare il rendering di componenti server interattivi in un'applicazione razor components.
     //aka: old Blazor server with web sockets
-    .AddInteractiveServerComponents();
+    .AddInteractiveServerComponents()
+    .AddInteractiveWebAssemblyComponents();
 
 var app = builder.Build();
 
@@ -28,6 +29,8 @@ app.UseAntiforgery();
 // esegue il rendering del componente specificato da TRootComponent quando il percorso corrisponde
 app.MapRazorComponents<App>()
     // Configura l'applicazione per supportare Microsoft.AspNetCore.Components.Web.RenderMode.InteractiveServer render mode
-    .AddInteractiveServerRenderMode();
+    .AddInteractiveServerRenderMode()
+    .AddInteractiveWebAssemblyRenderMode()
+    .AddAdditionalAssemblies(typeof(BlazorRenderModes.Client._Imports).Assembly);
 
 app.Run();
